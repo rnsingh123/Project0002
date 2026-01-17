@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VisionCafe | Live Music Nights</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  
+  <header class="navbar">
+    <div class="brand">
+      <span class="brand-icon">☕</span>
+      <span class="brand-name">VisionCafe</span>
+      <span class="brand-tag">Live Music</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#events">Tonight</a>
+      <a href="#lineup">Line-Up</a>
+      <a href="#reserve">Reserve</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="#reserve" class="btn btn-primary">Book a Table</a>
+    </div>
+  </header>
+
+  <main class="hero">
+    <section class="hero-left">
+      <p class="hero-chip">🎶 Live Music Nights • Fresh Coffee • Cozy Vibes</p>
+
+      <h1 class="hero-title">
+        Coffee, Comfort & <span class="highlight">Tonight’s Live Music</span>.
+      </h1>
+
+      <p class="hero-subtitle">
+        Experience premium brews, fresh bites, and a live stage that makes every night special.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#events" class="btn btn-primary">See Tonight’s Events</a>
+        <a href="#lineup" class="btn btn-secondary">View Artist Line-Up</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <h3>4.9★</h3>
+          <p>Rated by customers</p>
+        </div>
+        <div class="stat">
+          <h3>7:30 PM</h3>
+          <p>Show starts</p>
+        </div>
+        <div class="stat">
+          <h3>30+</h3>
+          <p>Seats available</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TONIGHT EVENTS CARD -->
+    <aside class="hero-right" id="events">
+      <div class="event-card">
+        <p class="small-title">Tonight’s Events</p>
+
+        <h2 class="event-title">Acoustic Night 🎸</h2>
+        <p class="event-desc">
+          Smooth vocals + warm lights + coffee aroma. Perfect for chill evenings.
+        </p>
+
+        <div class="event-meta">
+          <span class="pill">🕘 7:30 PM</span>
+          <span class="pill">📍 Stage A</span>
+          <span class="pill">🎟️ Free Entry</span>
+        </div>
+
+        <a href="#reserve" class="btn btn-primary btn-full">Reserve Your Seat</a>
+      </div>
+    </aside>
+  </main>
+
+  <section class="section" id="lineup">
+    <div class="section-head">
+      <h2>Artist Line-Up</h2>
+      <p>Meet tonight’s performers bringing the vibe to VisionCafe.</p>
+    </div>
+
+    <div class="lineup-grid">
+      <div class="artist-card">
+        <div class="artist-avatar">A</div>
+        <div class="artist-info">
+          <h3>Aarav Beats</h3>
+          <p>Acoustic • Indie</p>
+        </div>
+        <span class="artist-time">7:30 PM</span>
+      </div>
+
+      <div class="artist-card">
+        <div class="artist-avatar">M</div>
+        <div class="artist-info">
+          <h3>Meera Soul</h3>
+          <p>Vocals • Jazz</p>
+        </div>
+        <span class="artist-time">8:15 PM</span>
+      </div>
+
+      <div class="artist-card">
+        <div class="artist-avatar">R</div>
+        <div class="artist-info">
+          <h3>Rohan Strings</h3>
+          <p>Guitar • Pop</p>
+        </div>
+        <span class="artist-time">9:00 PM</span>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section" id="reserve">
+    <div class="reserve-box">
+      <div class="reserve-left">
+        <h2>Reserve a Table</h2>
+        <p>Book your spot for tonight’s show in under 30 seconds.</p>
+      </div>
+
+      <form class="reserve-form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="tel" placeholder="Phone Number" required />
+        <input type="date" required />
+        <input type="time" required />
+        <button class="btn btn-primary btn-full" type="submit">Confirm Booking</button>
+      </form>
+    </div>
+  </section>
+
+
+  <footer class="footer" id="contact">
+    <p><b>VisionCafe</b> — Live Music & Coffee Nights ☕🎶</p>
+    <p>📍 Your City • 📞 +91 90000 00000 • ✉️ visionengine@gmail.com</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
