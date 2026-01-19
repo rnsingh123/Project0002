@@ -472,9 +472,7 @@ a, button, .card, .artist-card, .event-card, .read-card, .seat-box, .stat {
 }
 
 
-/* =========================
-   PREMIUM MENU CARDS
-========================= */
+
 .menu-cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -545,9 +543,7 @@ a, button, .card, .artist-card, .event-card, .read-card, .seat-box, .stat {
 }
 
 
-/* =========================
-   FIX: NAVBAR ALIGNMENT
-========================= */
+
 .navbar {
   padding: 14px 24px; /* balanced */
 }
