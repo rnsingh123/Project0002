@@ -301,8 +301,8 @@ body {
 ===================== */
 
 .section-tight {
-  padding-top: 10px
-  }
+  padding-top: 10px;
+}
 .section {
   max-width: 1100px;
   margin: auto;
@@ -368,31 +368,129 @@ body {
 }
 
 /* =====================
-   READ & SIP SECTION
+   READ & SIP (PREMIUM)
 ===================== */
+
+#readandsip {
+  position: relative;
+}
+
+/* soft premium glow behind the section */
+#readandsip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(197, 139, 74, 0.18), transparent 55%),
+    radial-gradient(circle at 80% 70%, rgba(255, 59, 59, 0.14), transparent 55%);
+  filter: blur(55px);
+  opacity: 0.95;
+  z-index: -1;
+}
+
+/* grid layout */
 .read-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  gap: 18px;
 }
 
+/* premium glass cards */
 .read-card {
-  padding: 18px;
-  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+
+  padding: 22px;
+  border-radius: 22px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.10),
+    rgba(0, 0, 0, 0.45)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  box-shadow:
+    0 22px 55px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+
+  backdrop-filter: blur(14px);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+/* gradient border glow */
+.read-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: 22px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(255, 59, 59, 0.45),
+    rgba(197, 139, 74, 0.45),
+    rgba(0, 170, 255, 0.18)
+  );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+/* subtle shine streak */
+.read-card::after {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -30%;
+  width: 70%;
+  height: 180%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.08),
+    transparent
+  );
+  transform: rotate(18deg);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* hover = premium lift */
+.read-card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.60),
+    0 0 0 1px rgba(197, 139, 74, 0.18);
+}
+
+/* headings + text */
 .read-card h3 {
   font-size: 18px;
-  margin-bottom: 8px;
+  font-weight: 900;
+  letter-spacing: -0.3px;
+  margin-bottom: 10px;
 }
 
 .read-card p {
-  opacity: 0.85;
-  margin-bottom: 12px;
-  line-height: 1.5;
+  opacity: 0.86;
+  margin-bottom: 14px;
+  line-height: 1.55;
+  font-size: 14px;
 }
 
-/* Category chips */
+/* =====================
+   CATEGORY CHIPS (PREMIUM)
+===================== */
+
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -400,23 +498,65 @@ body {
 }
 
 .chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   padding: 8px 12px;
   border-radius: 999px;
+
   font-size: 12px;
-  font-weight: 700;
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  color: rgba(255, 255, 255, 0.92);
+
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-/* Quiet zones list */
+.chip:hover {
+  transform: translateY(-2px);
+  border-color: rgba(197, 139, 74, 0.45);
+}
+
+/* =====================
+   QUIET ZONES LIST (PREMIUM)
+===================== */
+
 .read-list {
   list-style: none;
   display: grid;
   gap: 10px;
-  opacity: 0.95;
+  padding: 0;
+  margin: 0;
 }
 
-/* Reading seats grid */
+.read-list li {
+  padding: 12px 12px;
+  border-radius: 16px;
+
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  opacity: 0.95;
+  font-weight: 700;
+  font-size: 13px;
+
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.read-list li:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 59, 59, 0.35);
+}
+
+/* =====================
+   READING SEATS (PREMIUM)
+===================== */
+
 .seat-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -424,21 +564,58 @@ body {
 }
 
 .seat-box {
-  padding: 12px;
-  border-radius: 16px;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  position: relative;
+  overflow: hidden;
+
+  padding: 14px;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.seat-box:hover {
+  transform: translateY(-4px);
+  border-color: rgba(197, 139, 74, 0.45);
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.40);
+}
+
+/* small highlight line */
+.seat-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(255, 59, 59, 0.55), rgba(197, 139, 74, 0.55));
+  opacity: 0.35;
 }
 
 .seat-box h4 {
   font-size: 14px;
-  margin-bottom: 4px;
+  font-weight: 900;
+  margin-bottom: 6px;
+  letter-spacing: -0.2px;
 }
 
 .seat-box p {
   font-size: 12px;
-  opacity: 0.8;
+  opacity: 0.78;
   margin: 0;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 900px) {
+  .read-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* =====================
