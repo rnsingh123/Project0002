@@ -738,9 +738,9 @@ a, button, .card, .artist-card, .event-card, .read-card, .seat-box, .stat {
 }
 
 
-/* =========================
+/* 
    TODAY SPECIAL
-========================= */
+ */
 .special-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -788,9 +788,9 @@ a, button, .card, .artist-card, .event-card, .read-card, .seat-box, .stat {
   font-size: 18px;
 }
 
-/* =========================
+/* 
    CAROUSEL
-========================= */
+*/
 .carousel-wrap {
   position: relative;
   display: flex;
