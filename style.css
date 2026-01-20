@@ -156,7 +156,7 @@ body {
 .hero {
   max-width: 1100px;
   margin: auto;
-  padding: 60px 24px;
+  padding: 60px 24px 30px;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 26px;
@@ -299,6 +299,10 @@ body {
 /* =====================
    SECTIONS
 ===================== */
+
+.section-tight {
+  padding-top: 10px
+  }
 .section {
   max-width: 1100px;
   margin: auto;
@@ -509,7 +513,7 @@ body {
 }
 
 .special-card {
-  padding: 18px;
+  padding: 10px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -643,7 +647,7 @@ body {
 }
 
 /* =====================
-   RESERVE SECTION (STRONG CTA)
+   RESERVE SECTION 
 ===================== */
 #reserve {
   position: relative;
@@ -687,7 +691,7 @@ body {
   backdrop-filter: blur(14px);
 }
 
-/* inner premium border glow */
+
 .reserve-box::before {
   content: "";
   position: absolute;
@@ -765,7 +769,7 @@ body {
 }
 
 /* =====================
-   SEAT MAP (Flight Style)
+   SEAT MAP 
 ===================== */
 .seat-map {
   margin-top: 18px;
@@ -1008,5 +1012,10 @@ button,
   .visit-grid {
     grid-template-columns: 1fr;
   }
+}
+
+
+html {
+  scroll-behavior: smooth;
 }
 
