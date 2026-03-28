@@ -6,9 +6,8 @@
   <title>VisionCafe | Live Music Nights</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
-
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="theme.css" />
   <link rel="stylesheet" href="style.css" />
@@ -16,7 +15,6 @@
 
 <body>
 
-  
   <header class="navbar">
     <div class="brand">
       <span class="brand-icon">☕</span>
@@ -24,47 +22,49 @@
       <span class="brand-tag">Live Music</span>
     </div>
 
-    <nav class="nav-links">
+    <nav class="nav-links" id="navLinks">
       <a href="#events">Tonight</a>
       <a href="#lineup">Line-Up</a>
       <a href="#reserve">Reserve</a>
-      <a href="#contact">Contact</a>
-      <a href="#gallery">Gallery</a>
       <a href="#reviews">Reviews</a>
       <a href="#visit">Visit</a>
-
     </nav>
 
     <div class="nav-actions">
-      <a href="#reserve" class="btn btn-primary">Book a Table</a>
+      <a href="#reserve" class="btn btn-primary desktop-only">Book a Table</a>
+      <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  
+  <!-- Mobile Nav Drawer -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#events" class="mobile-nav-link">Tonight</a>
+    <a href="#lineup" class="mobile-nav-link">Line-Up</a>
+    <a href="#reserve" class="mobile-nav-link">Reserve</a>
+    <a href="#reviews" class="mobile-nav-link">Reviews</a>
+    <a href="#visit" class="mobile-nav-link">Visit</a>
+    <a href="#reserve" class="btn btn-primary" style="margin-top:8px;">Book a Table</a>
+  </div>
 
+  <!-- HERO -->
   <main class="hero">
     <section class="hero-left">
       <p class="hero-chip">🔥 Strong Roast • Live Music • Late Night Energy</p>
 
-
       <h1 class="hero-title">
-        Coffee, Comfort & <span class="highlight">Tonight’s Live Music</span>.
+        Coffee, Comfort & <span class="highlight">Tonight's Live Music</span>.
       </h1>
 
       <p class="hero-subtitle">
-  Strong brews, bold flavors, and a live stage that keeps the night alive.
-</p>
-
+        Strong brews, bold flavors, and a live stage that keeps the night alive.
+      </p>
 
       <div class="hero-buttons">
-        <a href="#events" class="btn btn-primary">Order Now</a>
-        <a href="#lineup" class="btn btn-secondary">Reserve Table</a>
+        <a href="#order" class="btn btn-primary">Order Now</a>
+        <a href="#reserve" class="btn btn-secondary">Reserve Table</a>
       </div>
-
-      
-
-
-
 
       <div class="hero-stats">
         <div class="stat">
@@ -82,134 +82,121 @@
       </div>
     </section>
 
-
-    <section class="section-tight" id="specials">
-  <div class="section-head">
-    <h2>Today’s Special</h2>
-    <p>Limited-time picks made for strong coffee lovers.</p>
-  </div>
-
-  <div class="special-grid">
-    <div class="special-card">
-      <span class="special-tag">🔥 Bestseller</span>
-      <h3>Dark Roast Espresso Shot</h3>
-      <p>Strong, bold & straight to the point.</p>
-      <div class="special-bottom">
-        <span class="price">₹99</span>
-        <a href="#order" class="btn btn-primary">Order</a>
-      </div>
-    </div>
-
-    <div class="special-card">
-      <span class="special-tag coffee">☕ Coffee + Chill</span>
-      <h3>Mocha Night Latte</h3>
-      <p>Chocolate + espresso with a smooth finish.</p>
-      <div class="special-bottom">
-        <span class="price">₹219</span>
-        <a href="#order" class="btn btn-primary">Order</a>
-      </div>
-    </div>
-
-    <div class="special-card">
-      <span class="special-tag blue">🎶 Music Combo</span>
-      <h3>Cold Brew + Croissant</h3>
-      <p>Perfect for tonight’s acoustic vibe.</p>
-      <div class="special-bottom">
-        <span class="price">₹249</span>
-        <a href="#order" class="btn btn-primary">Order</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <section class="section" id="order">
-  <div class="section-head">
-    <h2>Signature Drinks</h2>
-    <p>Handcrafted drinks designed for your mood.</p>
-  </div>
-
-  <div class="carousel-wrap">
-    <button class="carousel-btn left" aria-label="Scroll left">‹</button>
-
-    <div class="carousel" id="drinkCarousel">
-      <div class="drink-card">
-        <h3>Caramel Latte</h3>
-        <p>Sweet, smooth & creamy.</p>
-        <div class="drink-bottom">
-          <span class="price">₹199</span>
-          <button class="btn btn-primary">Add</button>
-        </div>
-      </div>
-
-      <div class="drink-card">
-        <h3>Vanilla Cold Brew</h3>
-        <p>Refreshing & bold.</p>
-        <div class="drink-bottom">
-          <span class="price">₹179</span>
-          <button class="btn btn-primary">Add</button>
-        </div>
-      </div>
-
-      <div class="drink-card">
-        <h3>Espresso Tonic</h3>
-        <p>Strong + fizzy kick.</p>
-        <div class="drink-bottom">
-          <span class="price">₹229</span>
-          <button class="btn btn-primary">Add</button>
-        </div>
-      </div>
-
-      <div class="drink-card">
-        <h3>Hazelnut Cappuccino</h3>
-        <p>Nutty + creamy vibe.</p>
-        <div class="drink-bottom">
-          <span class="price">₹209</span>
-          <button class="btn btn-primary">Add</button>
-        </div>
-      </div>
-
-      <div class="drink-card">
-        <h3>Dark Roast Americano</h3>
-        <p>Pure strength. No sugar needed.</p>
-        <div class="drink-bottom">
-          <span class="price">₹149</span>
-          <button class="btn btn-primary">Add</button>
-        </div>
-      </div>
-    </div>
-
-    <button class="carousel-btn right" aria-label="Scroll right">›</button>
-  </div>
-</section>
-
-
-    <!-- TONIGHT EVENTS CARD -->
+    <!-- Tonight's Event Card -->
     <aside class="hero-right" id="events">
       <div class="event-card">
-        <p class="small-title">Tonight’s Events</p>
-
+        <p class="small-title">Tonight's Events</p>
         <h2 class="event-title">Acoustic Night 🎸</h2>
         <p class="event-desc">
           Smooth vocals + warm lights + coffee aroma. Perfect for chill evenings.
         </p>
-
         <div class="event-meta">
           <span class="pill">🕘 7:30 PM</span>
           <span class="pill">📍 Stage A</span>
           <span class="pill">🎟️ Free Entry</span>
         </div>
-
         <a href="#reserve" class="btn btn-primary btn-full">Reserve Your Seat</a>
       </div>
     </aside>
   </main>
 
+  <!-- TODAY'S SPECIALS -->
+  <section class="section" id="specials">
+    <div class="section-head">
+      <h2>Today's Special</h2>
+      <p>Limited-time picks made for strong coffee lovers.</p>
+    </div>
+    <div class="special-grid">
+      <div class="special-card">
+        <span class="special-tag">🔥 Bestseller</span>
+        <h3>Dark Roast Espresso Shot</h3>
+        <p>Strong, bold & straight to the point.</p>
+        <div class="special-bottom">
+          <span class="price">₹99</span>
+          <a href="#order" class="btn btn-primary">Order</a>
+        </div>
+      </div>
+      <div class="special-card">
+        <span class="special-tag coffee">☕ Coffee + Chill</span>
+        <h3>Mocha Night Latte</h3>
+        <p>Chocolate + espresso with a smooth finish.</p>
+        <div class="special-bottom">
+          <span class="price">₹219</span>
+          <a href="#order" class="btn btn-primary">Order</a>
+        </div>
+      </div>
+      <div class="special-card">
+        <span class="special-tag blue">🎶 Music Combo</span>
+        <h3>Cold Brew + Croissant</h3>
+        <p>Perfect for tonight's acoustic vibe.</p>
+        <div class="special-bottom">
+          <span class="price">₹249</span>
+          <a href="#order" class="btn btn-primary">Order</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIGNATURE DRINKS CAROUSEL -->
+  <section class="section" id="order">
+    <div class="section-head">
+      <h2>Signature Drinks</h2>
+      <p>Handcrafted drinks designed for your mood.</p>
+    </div>
+    <div class="carousel-wrap">
+      <button class="carousel-btn left" aria-label="Scroll left">‹</button>
+      <div class="carousel" id="drinkCarousel">
+        <div class="drink-card">
+          <h3>Caramel Latte</h3>
+          <p>Sweet, smooth & creamy.</p>
+          <div class="drink-bottom">
+            <span class="price">₹199</span>
+            <button class="btn btn-primary">Add</button>
+          </div>
+        </div>
+        <div class="drink-card">
+          <h3>Vanilla Cold Brew</h3>
+          <p>Refreshing & bold.</p>
+          <div class="drink-bottom">
+            <span class="price">₹179</span>
+            <button class="btn btn-primary">Add</button>
+          </div>
+        </div>
+        <div class="drink-card">
+          <h3>Espresso Tonic</h3>
+          <p>Strong + fizzy kick.</p>
+          <div class="drink-bottom">
+            <span class="price">₹229</span>
+            <button class="btn btn-primary">Add</button>
+          </div>
+        </div>
+        <div class="drink-card">
+          <h3>Hazelnut Cappuccino</h3>
+          <p>Nutty + creamy vibe.</p>
+          <div class="drink-bottom">
+            <span class="price">₹209</span>
+            <button class="btn btn-primary">Add</button>
+          </div>
+        </div>
+        <div class="drink-card">
+          <h3>Dark Roast Americano</h3>
+          <p>Pure strength. No sugar needed.</p>
+          <div class="drink-bottom">
+            <span class="price">₹149</span>
+            <button class="btn btn-primary">Add</button>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn right" aria-label="Scroll right">›</button>
+    </div>
+  </section>
+
+  <!-- ARTIST LINE-UP -->
   <section class="section" id="lineup">
     <div class="section-head">
       <h2>Artist Line-Up</h2>
-      <p>Meet tonight’s performers bringing the vibe to VisionCafe.</p>
+      <p>Meet tonight's performers bringing the vibe to VisionCafe.</p>
     </div>
-
     <div class="lineup-grid">
       <div class="artist-card">
         <div class="artist-avatar">A</div>
@@ -219,7 +206,6 @@
         </div>
         <span class="artist-time">7:30 PM</span>
       </div>
-
       <div class="artist-card">
         <div class="artist-avatar">M</div>
         <div class="artist-info">
@@ -228,7 +214,6 @@
         </div>
         <span class="artist-time">8:15 PM</span>
       </div>
-
       <div class="artist-card">
         <div class="artist-avatar">R</div>
         <div class="artist-info">
@@ -240,305 +225,196 @@
     </div>
   </section>
 
-<section class="section" id="readandsip">
-  <div class="section-head">
-    <h2>Read & Sip 📚☕</h2>
-    <p>Quiet corners, warm coffee, and books that match your mood.</p>
-  </div>
-
-  
-
-
-  <div class="read-grid">
-    <!-- Book Categories -->
-    <div class="read-card">
-      <h3>Book Categories</h3>
-      <p>Pick your vibe and enjoy your perfect coffee pairing.</p>
-
-      <div class="chips">
-        <span class="chip">Fiction</span>
-        <span class="chip">Self-Help</span>
-        <span class="chip">Business</span>
-        <span class="chip">Poetry</span>
-        <span class="chip">Comics</span>
-        <span class="chip">Romance</span>
+  <!-- READ & SIP -->
+  <section class="section" id="readandsip">
+    <div class="section-head">
+      <h2>Read & Sip 📚☕</h2>
+      <p>Quiet corners, warm coffee, and books that match your mood.</p>
+    </div>
+    <div class="read-grid">
+      <div class="read-card">
+        <h3>Book Categories</h3>
+        <p>Pick your vibe and enjoy your perfect coffee pairing.</p>
+        <div class="chips">
+          <span class="chip">Fiction</span>
+          <span class="chip">Self-Help</span>
+          <span class="chip">Business</span>
+          <span class="chip">Poetry</span>
+          <span class="chip">Comics</span>
+          <span class="chip">Romance</span>
+        </div>
       </div>
-    </div>
-
-    <!-- Quiet Zones -->
-    <div class="read-card">
-      <h3>Quiet Zones</h3>
-      <p>Designed for focus, reading, and peaceful conversations.</p>
-
-      <ul class="read-list">
-        <li>🔇 Silent Reading Zone</li>
-        <li>💻 Work + Study Corner</li>
-        <li>🌿 Window Seats</li>
-        <li>🎧 Headphones Friendly</li>
-      </ul>
-    </div>
-
-    <!-- Reading Seats -->
-    <div class="read-card">
-      <h3>Reading Seats</h3>
-      <p>Choose the seat that matches your comfort.</p>
-
-      <div class="seat-grid">
-        <div class="seat-box">
-          <h4>Cozy Sofa</h4>
-          <p>Best for long reads</p>
-        </div>
-
-        <div class="seat-box">
-          <h4>Single Chair</h4>
-          <p>Personal & quiet</p>
-        </div>
-
-        <div class="seat-box">
-          <h4>Couple Corner</h4>
-          <p>Soft lighting vibes</p>
-        </div>
-
-        <div class="seat-box">
-          <h4>Study Table</h4>
-          <p>Work-friendly</p>
+      <div class="read-card">
+        <h3>Quiet Zones</h3>
+        <p>Designed for focus, reading, and peaceful conversations.</p>
+        <ul class="read-list">
+          <li>🔇 Silent Reading Zone</li>
+          <li>💻 Work + Study Corner</li>
+          <li>🌿 Window Seats</li>
+          <li>🎧 Headphones Friendly</li>
+        </ul>
+      </div>
+      <div class="read-card">
+        <h3>Reading Seats</h3>
+        <p>Choose the seat that matches your comfort.</p>
+        <div class="seat-grid">
+          <div class="seat-box"><h4>Cozy Sofa</h4><p>Best for long reads</p></div>
+          <div class="seat-box"><h4>Single Chair</h4><p>Personal & quiet</p></div>
+          <div class="seat-box"><h4>Couple Corner</h4><p>Soft lighting vibes</p></div>
+          <div class="seat-box"><h4>Study Table</h4><p>Work-friendly</p></div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!--
-     SIGNATURE MENU (PREMIUM)-->
-<section class="section" id="menu">
-  <div class="section-head">
-    <h2>Signature Menu</h2>
-    <p>Handcrafted coffee & fresh bites made for your vibe.</p>
-  </div>
-
-  <div class="menu-cards">
-    <div class="menu-card">
-      <div class="menu-top">
-        <span class="menu-icon">☕</span>
-        <span class="menu-badge">Popular</span>
+  <!-- SIGNATURE MENU -->
+  <section class="section" id="menu">
+    <div class="section-head">
+      <h2>Signature Menu</h2>
+      <p>Handcrafted coffee & fresh bites made for your vibe.</p>
+    </div>
+    <div class="menu-cards">
+      <div class="menu-card">
+        <div class="menu-top"><span class="menu-icon">☕</span><span class="menu-badge">Popular</span></div>
+        <h3>Caramel Latte</h3>
+        <p>Sweet, smooth and creamy. Perfect for chill nights.</p>
+        <div class="menu-bottom"><span class="menu-price">₹199</span><button class="btn btn-primary">Add</button></div>
       </div>
-      <h3>Caramel Latte</h3>
-      <p>Sweet, smooth and creamy. Perfect for chill nights.</p>
-      <div class="menu-bottom">
-        <span class="menu-price">₹199</span>
-        <button class="btn btn-primary">Add</button>
+      <div class="menu-card">
+        <div class="menu-top"><span class="menu-icon">🧊</span><span class="menu-badge">Cold</span></div>
+        <h3>Vanilla Cold Brew</h3>
+        <p>Refreshing and bold. Best for work & reading time.</p>
+        <div class="menu-bottom"><span class="menu-price">₹179</span><button class="btn btn-primary">Add</button></div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-top"><span class="menu-icon">🥐</span><span class="menu-badge">Fresh</span></div>
+        <h3>Cheese Croissant</h3>
+        <p>Flaky, buttery and baked fresh every evening.</p>
+        <div class="menu-bottom"><span class="menu-price">₹129</span><button class="btn btn-primary">Add</button></div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-top"><span class="menu-icon">🍫</span><span class="menu-badge">Sweet</span></div>
+        <h3>Chocolate Muffin</h3>
+        <p>Soft, rich and warm. Perfect with espresso.</p>
+        <div class="menu-bottom"><span class="menu-price">₹99</span><button class="btn btn-primary">Add</button></div>
       </div>
     </div>
+  </section>
 
-    <div class="menu-card">
-      <div class="menu-top">
-        <span class="menu-icon">🧊</span>
-        <span class="menu-badge">Cold</span>
+  <!-- PICKS -->
+  <section class="section" id="picks">
+    <div class="section-head">
+      <h2>Chef's Pick & Barista's Pick</h2>
+      <p>Hand-selected recommendations for tonight.</p>
+    </div>
+    <div class="picks-grid">
+      <div class="pick-card">
+        <span class="pick-badge">👨‍🍳 Chef's Pick</span>
+        <h3>Cheese Croissant</h3>
+        <p>Flaky, buttery & baked fresh every evening.</p>
+        <div class="pick-bottom"><span class="price">₹129</span><button class="btn btn-primary">Add</button></div>
       </div>
-      <h3>Vanilla Cold Brew</h3>
-      <p>Refreshing and bold. Best for work & reading time.</p>
-      <div class="menu-bottom">
-        <span class="menu-price">₹179</span>
-        <button class="btn btn-primary">Add</button>
+      <div class="pick-card">
+        <span class="pick-badge barista">☕ Barista's Pick</span>
+        <h3>Dark Roast Espresso</h3>
+        <p>Strong shot, bold flavor, perfect for late nights.</p>
+        <div class="pick-bottom"><span class="price">₹99</span><button class="btn btn-primary">Add</button></div>
       </div>
     </div>
+  </section>
 
-    <div class="menu-card">
-      <div class="menu-top">
-        <span class="menu-icon">🥐</span>
-        <span class="menu-badge">Fresh</span>
-      </div>
-      <h3>Cheese Croissant</h3>
-      <p>Flaky, buttery and baked fresh every evening.</p>
-      <div class="menu-bottom">
-        <span class="menu-price">₹129</span>
-        <button class="btn btn-primary">Add</button>
-      </div>
-    </div>
-
-    <div class="menu-card">
-      <div class="menu-top">
-        <span class="menu-icon">🍫</span>
-        <span class="menu-badge">Sweet</span>
-      </div>
-      <h3>Chocolate Muffin</h3>
-      <p>Soft, rich and warm. Perfect with espresso.</p>
-      <div class="menu-bottom">
-        <span class="menu-price">₹99</span>
-        <button class="btn btn-primary">Add</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="section" id="picks">
-  <div class="section-head">
-    <h2>Chef’s Pick & Barista’s Pick</h2>
-    <p>Hand-selected recommendations for tonight.</p>
-  </div>
-
-  <div class="picks-grid">
-    <div class="pick-card">
-      <span class="pick-badge">👨‍🍳 Chef’s Pick</span>
-      <h3>Cheese Croissant</h3>
-      <p>Flaky, buttery & baked fresh every evening.</p>
-      <div class="pick-bottom">
-        <span class="price">₹129</span>
-        <button class="btn btn-primary">Add</button>
-      </div>
-    </div>
-
-    <div class="pick-card">
-      <span class="pick-badge barista">☕ Barista’s Pick</span>
-      <h3>Dark Roast Espresso</h3>
-      <p>Strong shot, bold flavor, perfect for late nights.</p>
-      <div class="pick-bottom">
-        <span class="price">₹99</span>
-        <button class="btn btn-primary">Add</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
+  <!-- RESERVE -->
   <section class="section" id="reserve">
-  <div class="reserve-box">
-    <div class="reserve-left">
-      <h2>Reserve a Table</h2>
-      <p>Pick your seat like booking a flight — quick & satisfying.</p>
-
-      <div class="seat-map">
-        <p class="seat-title">Choose Your Seat Style</p>
-
-        <div class="seat-grid-map" id="seatGrid">
-          <button class="seat seat-sofa">S1</button>
-          <button class="seat seat-sofa">S2</button>
-          <button class="seat seat-window">W1</button>
-          <button class="seat seat-window">W2</button>
-
-          <button class="seat seat-study">T1</button>
-          <button class="seat seat-study">T2</button>
-          <button class="seat seat-couple">C1</button>
-          <button class="seat seat-couple">C2</button>
-        </div>
-
-        <p class="seat-note">Selected: <span id="seatSelected">None</span></p>
-      </div>
-    </div>
-
-    <form class="reserve-form">
-      <input type="text" placeholder="Your Name" required />
-      <input type="tel" placeholder="Phone Number" required />
-      <input type="date" required />
-      <input type="time" required />
-      <button class="btn btn-primary btn-full" type="submit">Confirm Booking</button>
-    </form>
-  </div>
-</section>
-
-<!-- REVIEWS -->
-<section class="section" id="reviews">
-  <div class="section-head">
-    <h2>Customer Reviews</h2>
-    <p>Strong coffee. Cozy vibe. Real people.</p>
-  </div>
-
-  <div class="reviews-grid">
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar">R</div>
-        <div>
-          <h3>Riya</h3>
-          <p class="review-meta">⭐ 5.0 • Acoustic Night</p>
+    <div class="reserve-box">
+      <div class="reserve-left">
+        <h2>Reserve a Table</h2>
+        <p>Pick your seat like booking a flight — quick & satisfying.</p>
+        <div class="seat-map">
+          <p class="seat-title">Choose Your Seat Style</p>
+          <div class="seat-grid-map" id="seatGrid">
+            <button class="seat seat-sofa">S1</button>
+            <button class="seat seat-sofa">S2</button>
+            <button class="seat seat-window">W1</button>
+            <button class="seat seat-window">W2</button>
+            <button class="seat seat-study">T1</button>
+            <button class="seat seat-study">T2</button>
+            <button class="seat seat-couple">C1</button>
+            <button class="seat seat-couple">C2</button>
+          </div>
+          <p class="seat-note">Selected: <span id="seatSelected">None</span></p>
         </div>
       </div>
-      <p class="review-text">
-        Coffee was bold and smooth ☕🔥 The live music made it feel premium. Best night vibe café.
-      </p>
+      <form class="reserve-form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="tel" placeholder="Phone Number" required />
+        <input type="date" required />
+        <input type="time" required />
+        <button class="btn btn-primary btn-full" type="submit">Confirm Booking</button>
+      </form>
     </div>
+  </section>
 
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar">A</div>
-        <div>
-          <h3>Arjun</h3>
-          <p class="review-meta">⭐ 4.9 • Signature Drinks</p>
+  <!-- REVIEWS -->
+  <section class="section" id="reviews">
+    <div class="section-head">
+      <h2>Customer Reviews</h2>
+      <p>Strong coffee. Cozy vibe. Real people.</p>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">R</div>
+          <div><h3>Riya</h3><p class="review-meta">⭐ 5.0 • Acoustic Night</p></div>
         </div>
+        <p class="review-text">Coffee was bold and smooth ☕🔥 The live music made it feel premium. Best night vibe café.</p>
       </div>
-      <p class="review-text">
-        The caramel latte is insane. Great seating + clean ambience. Perfect for chill evenings.
-      </p>
-    </div>
-
-    <div class="review-card">
-      <div class="review-top">
-        <div class="review-avatar">S</div>
-        <div>
-          <h3>Sneha</h3>
-          <p class="review-meta">⭐ 5.0 • Read & Sip</p>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">A</div>
+          <div><h3>Arjun</h3><p class="review-meta">⭐ 4.9 • Signature Drinks</p></div>
         </div>
+        <p class="review-text">The caramel latte is insane. Great seating + clean ambience. Perfect for chill evenings.</p>
       </div>
-      <p class="review-text">
-        Quiet corner for reading + strong cold brew. Staff is friendly and the vibe is top-tier ✨
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- MAP + CONTACT -->
-<section class="section" id="visit">
-  <div class="section-head">
-    <h2>Find Us</h2>
-    <p>Drop in tonight — coffee is strong and the stage is live.</p>
-  </div>
-
-  <div class="visit-grid">
-    <div class="visit-card">
-      <h3>📍 VisionCafe Location</h3>
-      <p class="visit-text">India • Open Daily • Live Music Nights</p>
-
-      <div class="map-box">
-        <iframe
-          title="VisionCafe Location"
-          src="https://maps.google.com/maps?q=India&t=&z=13&ie=UTF8&iwloc=&output=embed"
-          loading="lazy"
-        ></iframe>
+      <div class="review-card">
+        <div class="review-top">
+          <div class="review-avatar">S</div>
+          <div><h3>Sneha</h3><p class="review-meta">⭐ 5.0 • Read & Sip</p></div>
+        </div>
+        <p class="review-text">Quiet corner for reading + strong cold brew. Staff is friendly and the vibe is top-tier ✨</p>
       </div>
     </div>
+  </section>
 
-    <div class="visit-card">
-      <h3>📞 Contact</h3>
-      <p class="visit-text">Reserve fast or call us for tonight’s seating.</p>
-
-      <div class="contact-list">
-        <div class="contact-item">
-          <span>☎️</span>
-          <p>+91 9788866543</p>
-        </div>
-
-        <div class="contact-item">
-          <span>✉️</span>
-          <p>visionengine@gmail.com</p>
-        </div>
-
-        <div class="contact-item">
-          <span>⏰</span>
-          <p>Mon–Sun: 10 AM – 11 PM</p>
+  <!-- VISIT / MAP -->
+  <section class="section" id="visit">
+    <div class="section-head">
+      <h2>Find Us</h2>
+      <p>Drop in tonight — coffee is strong and the stage is live.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-card">
+        <h3>📍 VisionCafe Location</h3>
+        <p class="visit-text">India • Open Daily • Live Music Nights</p>
+        <div class="map-box">
+          <iframe
+            title="VisionCafe Location"
+            src="https://maps.google.com/maps?q=India&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+          ></iframe>
         </div>
       </div>
-
-      <a class="btn btn-primary btn-full" href="#reserve">Reserve a Table</a>
+      <div class="visit-card">
+        <h3>📞 Contact</h3>
+        <p class="visit-text">Reserve fast or call us for tonight's seating.</p>
+        <div class="contact-list">
+          <div class="contact-item"><span>☎️</span><p>+91 9788866543</p></div>
+          <div class="contact-item"><span>✉️</span><p>visionengine@gmail.com</p></div>
+          <div class="contact-item"><span>⏰</span><p>Mon–Sun: 10 AM – 11 PM</p></div>
+        </div>
+        <a class="btn btn-primary btn-full" href="#reserve">Reserve a Table</a>
+      </div>
     </div>
-  </div>
-</section>
-
-
-
-
-
+  </section>
 
   <footer class="footer" id="contact">
     <p><b>VisionCafe</b> — Live Music & Comfy Nights ☕🎶</p>

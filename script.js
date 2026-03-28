@@ -1,3 +1,22 @@
+// ===== Hamburger Menu =====
+const hamburger = document.getElementById("hamburger");
+const mobileNav = document.getElementById("mobileNav");
+
+if (hamburger && mobileNav) {
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("open");
+    mobileNav.classList.toggle("open");
+  });
+
+  // Close drawer when a link is tapped
+  mobileNav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("open");
+      mobileNav.classList.remove("open");
+    });
+  });
+}
+
 // ===== Carousel Controls =====
 const carousel = document.getElementById("drinkCarousel");
 const leftBtn = document.querySelector(".carousel-btn.left");
