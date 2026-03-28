@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rnsingh123.github.io/Project0002/sitemap.xml
