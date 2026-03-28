@@ -1,11 +1,51 @@
-/* =====================
-   IMPORT THEME
-===================== */
+/* =================================================================
+   STYLE.CSS — COMPONENT STYLES
+   -----------------------------------------------------------------
+   All visual styles live here. Colors, fonts, spacing, and
+   shadows are pulled from theme.css via CSS variables.
+
+   REUSE GUIDE FOR NEW SITES:
+   - Copy the section you need (e.g. NAVBAR, CAROUSEL, RESERVE)
+   - Swap class names to match your HTML
+   - All values reference theme.css tokens — just update theme.css
+     to restyle everything at once.
+
+   FILE STRUCTURE (in order):
+   1.  Import Theme
+   2.  Base Reset
+   3.  Navbar
+   4.  Buttons
+   5.  Hero Layout
+   6.  Event Card
+   7.  Sections (shared wrapper)
+   8.  Today's Specials
+   9.  Carousel
+   10. Artist Line-Up
+   11. Read & Sip
+   12. Signature Menu
+   13. Chef's / Barista's Picks
+   14. Reserve Section + Seat Map
+   15. Reviews
+   16. Visit / Map + Contact
+   17. Footer
+   18. Hamburger + Mobile Nav Drawer
+   19. Responsive Breakpoints
+   ================================================================= */
+
+
+/* =================================================================
+   1. IMPORT THEME
+   Always import theme.css first so all variables are available.
+   ================================================================= */
 @import url("theme.css");
 
-/* =====================
-   BASE RESET
-===================== */
+
+/* =================================================================
+   2. BASE RESET
+   Removes default browser margin/padding. box-sizing: border-box
+   makes width/height include padding — much easier to work with.
+   scroll-behavior: smooth makes anchor links (#section) animate.
+   ================================================================= */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -13,7 +53,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* smooth scroll for all anchor links */
 }
 
 body {
@@ -24,9 +64,17 @@ body {
   line-height: 1.6;
 }
 
-/* =====================
-   NAVBAR
-===================== */
+
+/* =================================================================
+   3. NAVBAR
+   -----------------------------------------------------------------
+   position: sticky keeps it visible while scrolling.
+   backdrop-filter: blur() creates the frosted glass effect.
+   z-index: 100 keeps it above all other content.
+
+   REUSE: Copy .navbar, .brand, .nav-links, .nav-actions.
+   Change brand colors via --brand in theme.css.
+   ================================================================= */
 .navbar {
   position: sticky;
   top: 0;
@@ -35,9 +83,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--glass);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: var(--glass);           /* frosted glass bg */
+  backdrop-filter: blur(14px);        /* blur behind navbar */
+  -webkit-backdrop-filter: blur(14px);/* Safari support */
   border-bottom: 1px solid var(--border);
   box-shadow: var(--shadow-sm);
 }
@@ -50,9 +98,7 @@ body {
   color: var(--text-primary);
 }
 
-.brand-icon {
-  font-size: 22px;
-}
+.brand-icon { font-size: 22px; }
 
 .brand-name {
   font-size: 18px;
@@ -61,6 +107,7 @@ body {
   color: var(--brand);
 }
 
+/* small pill tag next to brand name */
 .brand-tag {
   font-size: 11px;
   font-weight: 700;
@@ -95,11 +142,19 @@ body {
 .nav-actions {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
-/* =====================
-   BUTTONS
-===================== */
+
+/* =================================================================
+   4. BUTTONS
+   -----------------------------------------------------------------
+   Two variants: btn-primary (brand CTA) and btn-secondary (ghost).
+   btn-full stretches to 100% width — useful inside forms/cards.
+
+   REUSE: Add class="btn btn-primary" to any <a> or <button>.
+   Change button color via --brand and --gradient-brand in theme.css.
+   ================================================================= */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -115,6 +170,7 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+/* primary = filled brand color */
 .btn-primary {
   background: var(--gradient-brand);
   color: #fff;
@@ -126,6 +182,7 @@ body {
   box-shadow: 0 12px 28px rgba(212, 84, 26, 0.38);
 }
 
+/* secondary = outlined / ghost style */
 .btn-secondary {
   background: var(--bg-muted);
   color: var(--brand);
@@ -137,39 +194,36 @@ body {
   transform: translateY(-2px);
 }
 
-.btn-full {
-  width: 100%;
-}
+/* stretches button to fill its container */
+.btn-full { width: 100%; }
 
-/* =====================
-   HERO LAYOUT
-===================== */
+/* hide on mobile — used for navbar CTA */
+/* toggled via @media at the bottom of this file */
+
+
+/* =================================================================
+   5. HERO LAYOUT
+   -----------------------------------------------------------------
+   Two-column grid: left = headline + stats, right = event card.
+   On mobile (<900px) this collapses to a single column.
+
+   REUSE: The .hero grid pattern works for any landing page hero.
+   Adjust grid-template-columns ratio to change left/right balance.
+   ================================================================= */
 .hero {
   max-width: 1140px;
   margin: 0 auto;
   padding: 64px 32px 40px;
   display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: 1.3fr 0.7fr; /* left wider than right */
   gap: 28px;
   align-items: start;
 }
 
-.hero-left {
-  grid-column: 1;
-  grid-row: 1;
-}
+.hero-left  { grid-column: 1; grid-row: 1; }
+.hero-right { grid-column: 2; grid-row: 1; align-self: start; }
 
-.hero-right {
-  grid-column: 2;
-  grid-row: 1 / 3;
-  align-self: start;
-}
-
-.section-tight {
-  padding-top: 0;
-}
-
+/* small pill label above the headline */
 .hero-chip {
   display: inline-block;
   padding: 8px 14px;
@@ -190,11 +244,12 @@ body {
   color: var(--text-primary);
 }
 
+/* gradient text effect on a span inside the title */
 .highlight {
   background: var(--gradient-brand);
   -webkit-background-clip: text;
   background-clip: text;
-  color: transparent;
+  color: transparent; /* makes the gradient show through */
 }
 
 .hero-subtitle {
@@ -212,6 +267,7 @@ body {
   margin-bottom: 32px;
 }
 
+/* stat row: rating, show time, seats */
 .hero-stats {
   display: flex;
   gap: 14px;
@@ -240,9 +296,15 @@ body {
   font-weight: 600;
 }
 
-/* =====================
-   EVENT CARD (hero-right)
-===================== */
+
+/* =================================================================
+   6. EVENT CARD  (hero-right / aside)
+   -----------------------------------------------------------------
+   Sits in the right column of the hero. Shows tonight's event
+   details with time/location pills and a CTA button.
+
+   REUSE: Works for any "featured info" sidebar card.
+   ================================================================= */
 .event-card {
   background: var(--gradient-card);
   border: 1px solid var(--border);
@@ -251,6 +313,7 @@ body {
   padding: 24px;
 }
 
+/* small uppercase label above the card title */
 .small-title {
   font-size: 12px;
   font-weight: 700;
@@ -274,6 +337,7 @@ body {
   font-size: 14px;
 }
 
+/* row of info pills (time, location, entry) */
 .event-meta {
   display: flex;
   flex-wrap: wrap;
@@ -281,6 +345,7 @@ body {
   margin-bottom: 18px;
 }
 
+/* reusable pill/tag component */
 .pill {
   font-size: 12px;
   font-weight: 700;
@@ -291,18 +356,23 @@ body {
   color: var(--text-secondary);
 }
 
-/* =====================
-   SECTIONS
-===================== */
+
+/* =================================================================
+   7. SECTIONS  (shared wrapper)
+   -----------------------------------------------------------------
+   .section = max-width container with consistent padding.
+   .section-head = title + subtitle above any grid/list.
+
+   REUSE: Wrap every page section in <section class="section">.
+   Add id="sectionname" for anchor link navigation.
+   ================================================================= */
 .section {
   max-width: 1140px;
   margin: 0 auto;
   padding: 56px 32px;
 }
 
-.section-head {
-  margin-bottom: 24px;
-}
+.section-head { margin-bottom: 24px; }
 
 .section-head h2 {
   font-size: 28px;
@@ -317,9 +387,26 @@ body {
   font-size: 14px;
 }
 
-/* =====================
-   TODAY'S SPECIALS
-===================== */
+/* used when a section needs a tinted full-width background */
+/* apply directly on the <section> element, not .section */
+#readandsip,
+#reserve {
+  background: linear-gradient(160deg, #fff8f0, #fdf3e3);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+
+/* =================================================================
+   8. TODAY'S SPECIALS
+   -----------------------------------------------------------------
+   3-column card grid. Each card has a colored tag, title,
+   description, price, and order button.
+
+   REUSE: Works for any "featured items" grid (products, services).
+   Add more .special-tag color variants by adding a new modifier
+   class (e.g. .special-tag.green) with different rgba values.
+   ================================================================= */
 .special-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -350,9 +437,9 @@ body {
 .special-card p {
   font-size: 13px;
   color: var(--text-muted);
-  margin-bottom: 0;
 }
 
+/* default tag = brand/red */
 .special-tag {
   display: inline-block;
   font-size: 11px;
@@ -365,18 +452,21 @@ body {
   margin-bottom: 12px;
 }
 
+/* modifier: gold/coffee tone */
 .special-tag.coffee {
   background: var(--gold-light);
   border-color: var(--border-strong);
   color: var(--gold);
 }
 
+/* modifier: green/accent tone */
 .special-tag.blue {
   background: rgba(44, 110, 73, 0.10);
   border-color: rgba(44, 110, 73, 0.25);
   color: var(--accent);
 }
 
+/* price + button row at bottom of card */
 .special-bottom {
   display: flex;
   justify-content: space-between;
@@ -384,17 +474,25 @@ body {
   margin-top: 14px;
 }
 
+/* reusable price display — used across specials, menu, picks */
 .price {
   font-weight: 900;
   font-size: 18px;
   color: var(--brand);
 }
 
-/* =====================
-   CAROUSEL (Signature Drinks)
-===================== */
+
+/* =================================================================
+   9. CAROUSEL  (Signature Drinks)
+   -----------------------------------------------------------------
+   Horizontally scrollable card row with prev/next buttons.
+   On mobile, buttons are hidden and scroll-snap takes over
+   for a native swipe feel.
+
+   REUSE: Works for any horizontal scroll list (products, photos).
+   Change .drink-card min-width to control how many cards show.
+   ================================================================= */
 .carousel-wrap {
-  position: relative;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -403,22 +501,21 @@ body {
 .carousel {
   display: flex;
   gap: 14px;
-  overflow-x: auto;
+  overflow-x: auto;          /* enables horizontal scroll */
   scroll-behavior: smooth;
   padding: 10px 4px;
   border-radius: var(--radius-lg);
   flex: 1;
 }
 
-.carousel::-webkit-scrollbar {
-  height: 5px;
-}
-
+/* thin custom scrollbar (desktop only) */
+.carousel::-webkit-scrollbar { height: 5px; }
 .carousel::-webkit-scrollbar-thumb {
   background: var(--border-strong);
   border-radius: var(--radius-pill);
 }
 
+/* prev / next arrow buttons */
 .carousel-btn {
   flex-shrink: 0;
   width: 42px;
@@ -438,14 +535,15 @@ body {
   transform: scale(1.05);
 }
 
+/* individual drink card inside carousel */
 .drink-card {
-  min-width: 220px;
+  min-width: 220px;          /* controls how many cards are visible */
   padding: 18px;
   border-radius: var(--radius-lg);
   background: var(--gradient-card);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-sm);
-  flex-shrink: 0;
+  flex-shrink: 0;            /* prevents cards from shrinking */
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -461,10 +559,7 @@ body {
   margin-bottom: 6px;
 }
 
-.drink-card p {
-  font-size: 13px;
-  color: var(--text-muted);
-}
+.drink-card p { font-size: 13px; color: var(--text-muted); }
 
 .drink-bottom {
   display: flex;
@@ -473,9 +568,16 @@ body {
   margin-top: 14px;
 }
 
-/* =====================
-   LINE-UP
-===================== */
+
+/* =================================================================
+   10. ARTIST LINE-UP
+   -----------------------------------------------------------------
+   3-column grid of artist cards. Each card has an avatar letter,
+   name, genre, and performance time.
+
+   REUSE: Works for team pages, speaker lists, staff profiles.
+   Replace the letter avatar with an <img> for real photos.
+   ================================================================= */
 .lineup-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -499,6 +601,7 @@ body {
   box-shadow: var(--shadow-md);
 }
 
+/* letter avatar — replace with img for real photos */
 .artist-avatar {
   width: 46px;
   height: 46px;
@@ -514,9 +617,7 @@ body {
   flex-shrink: 0;
 }
 
-.artist-info {
-  flex: 1;
-}
+.artist-info { flex: 1; }
 
 .artist-info h3 {
   font-size: 15px;
@@ -525,27 +626,27 @@ body {
   margin-bottom: 3px;
 }
 
-.artist-info p {
-  font-size: 12px;
-  color: var(--text-muted);
-}
+.artist-info p { font-size: 12px; color: var(--text-muted); }
 
 .artist-time {
   font-weight: 800;
   font-size: 13px;
   color: var(--brand);
-  white-space: nowrap;
+  white-space: nowrap; /* prevents time from wrapping */
 }
 
-/* =====================
-   READ & SIP
-===================== */
-#readandsip {
-  background: linear-gradient(160deg, #fff8f0, #fdf3e3);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
 
+/* =================================================================
+   11. READ & SIP
+   -----------------------------------------------------------------
+   3-column grid of info cards: categories (chips), zones (list),
+   and seat types (2x2 mini grid).
+
+   REUSE:
+   - .chips + .chip = tag/filter row (reuse anywhere)
+   - .read-list = styled icon list (reuse for features/amenities)
+   - .seat-grid + .seat-box = 2x2 info grid (reuse for any 4-item layout)
+   ================================================================= */
 .read-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -580,6 +681,8 @@ body {
   line-height: 1.55;
 }
 
+/* ---- Chips (category tags) ---- */
+/* REUSE: Add .chips wrapper + .chip spans anywhere for filter tags */
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -605,6 +708,8 @@ body {
   transform: translateY(-2px);
 }
 
+/* ---- Styled list (quiet zones) ---- */
+/* REUSE: Use .read-list for any icon-prefixed feature list */
 .read-list {
   list-style: none;
   display: grid;
@@ -627,6 +732,8 @@ body {
   border-color: var(--brand);
 }
 
+/* ---- 2x2 mini info grid (reading seats) ---- */
+/* REUSE: Use .seat-grid + .seat-box for any 4-item feature grid */
 .seat-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -654,18 +761,21 @@ body {
   margin-bottom: 4px;
 }
 
-.seat-box p {
-  font-size: 12px;
-  color: var(--text-muted);
-  margin: 0;
-}
+.seat-box p { font-size: 12px; color: var(--text-muted); margin: 0; }
 
-/* =====================
-   SIGNATURE MENU
-===================== */
+
+/* =================================================================
+   12. SIGNATURE MENU
+   -----------------------------------------------------------------
+   4-column card grid. Each card has an icon, badge, name,
+   description, price, and add button.
+
+   REUSE: Works for any product/service grid.
+   Change grid-template-columns to adjust columns per row.
+   ================================================================= */
 .menu-cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr); /* 4 cols desktop, 2 at 1024px, 1 on mobile */
   gap: 16px;
 }
 
@@ -683,6 +793,7 @@ body {
   box-shadow: var(--shadow-md);
 }
 
+/* icon + badge row at top of card */
 .menu-top {
   display: flex;
   align-items: center;
@@ -690,10 +801,9 @@ body {
   margin-bottom: 12px;
 }
 
-.menu-icon {
-  font-size: 22px;
-}
+.menu-icon { font-size: 22px; }
 
+/* small pill badge (Popular, Cold, Fresh, Sweet) */
 .menu-badge {
   font-size: 11px;
   font-weight: 800;
@@ -718,6 +828,7 @@ body {
   margin-bottom: 14px;
 }
 
+/* price + add button row */
 .menu-bottom {
   display: flex;
   align-items: center;
@@ -731,9 +842,16 @@ body {
   color: var(--brand);
 }
 
-/* =====================
-   CHEF'S / BARISTA'S PICKS
-===================== */
+
+/* =================================================================
+   13. CHEF'S / BARISTA'S PICKS
+   -----------------------------------------------------------------
+   2-column highlight cards. Uses .pick-badge with a .barista
+   modifier for the second card's different color.
+
+   REUSE: Works for any "featured recommendation" pair.
+   Add more modifier classes for additional badge colors.
+   ================================================================= */
 .picks-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -761,12 +879,9 @@ body {
   margin-bottom: 6px;
 }
 
-.pick-card p {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-bottom: 0;
-}
+.pick-card p { font-size: 13px; color: var(--text-muted); }
 
+/* default badge = brand/red (Chef's Pick) */
 .pick-badge {
   display: inline-block;
   font-size: 11px;
@@ -779,6 +894,7 @@ body {
   margin-bottom: 12px;
 }
 
+/* modifier: gold tone (Barista's Pick) */
 .pick-badge.barista {
   background: var(--gold-light);
   border-color: var(--border-strong);
@@ -792,18 +908,22 @@ body {
   margin-top: 16px;
 }
 
-/* =====================
-   RESERVE SECTION
-===================== */
-#reserve {
-  background: linear-gradient(160deg, #fff8f0, #fdf3e3);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
 
+/* =================================================================
+   14. RESERVE SECTION + SEAT MAP
+   -----------------------------------------------------------------
+   Two-column layout: left = seat picker, right = booking form.
+   The seat map uses a 4-column button grid with color-coded
+   seat types. JS handles the selected state.
+
+   REUSE:
+   - .reserve-box grid pattern works for any split form layout.
+   - .seat-grid-map + .seat buttons work for any visual selector.
+   - .reserve-form input styles work for any styled form.
+   ================================================================= */
 .reserve-box {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; /* equal split left/right */
   gap: 32px;
   padding: 36px;
   border-radius: var(--radius-xl);
@@ -826,6 +946,7 @@ body {
   line-height: 1.5;
 }
 
+/* seat map container */
 .seat-map {
   margin-top: 20px;
   padding: 16px;
@@ -841,6 +962,7 @@ body {
   margin-bottom: 12px;
 }
 
+/* 4-column grid of seat buttons */
 .seat-grid-map {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -848,6 +970,7 @@ body {
   margin-bottom: 10px;
 }
 
+/* individual seat button */
 .seat {
   height: 44px;
   border-radius: var(--radius-md);
@@ -860,11 +983,9 @@ body {
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
-.seat:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-sm);
-}
+.seat:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
 
+/* JS adds .selected when a seat is clicked */
 .seat.selected {
   border-color: var(--brand);
   background: rgba(212, 84, 26, 0.08);
@@ -872,21 +993,19 @@ body {
   box-shadow: 0 0 0 3px rgba(212, 84, 26, 0.15);
 }
 
-.seat-sofa   { background: rgba(212, 84, 26, 0.07); }
-.seat-window { background: rgba(44, 110, 73, 0.07); }
-.seat-study  { background: rgba(201, 146, 42, 0.07); }
-.seat-couple { background: rgba(180, 120, 60, 0.07); }
+/* color-coded seat types — add more as needed */
+.seat-sofa   { background: rgba(212, 84, 26, 0.07); }  /* red tint */
+.seat-window { background: rgba(44, 110, 73, 0.07); }  /* green tint */
+.seat-study  { background: rgba(201, 146, 42, 0.07); } /* gold tint */
+.seat-couple { background: rgba(180, 120, 60, 0.07); } /* warm tint */
 
-.seat-note {
-  font-size: 13px;
-  color: var(--text-muted);
-  font-weight: 600;
-}
+.seat-note { font-size: 13px; color: var(--text-muted); font-weight: 600; }
 
+/* booking form — right column */
 .reserve-form {
   display: grid;
   gap: 14px;
-  align-content: start;
+  align-content: start; /* inputs stack from top, not stretched */
 }
 
 .reserve-form input {
@@ -902,25 +1021,26 @@ body {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+/* focus ring on input — important for accessibility */
 .reserve-form input:focus {
   border-color: var(--brand);
   box-shadow: 0 0 0 3px rgba(212, 84, 26, 0.12);
 }
 
-.reserve-form input::placeholder {
-  color: var(--text-muted);
-  font-weight: 600;
-}
+.reserve-form input::placeholder { color: var(--text-muted); font-weight: 600; }
 
-.reserve-form .btn-full {
-  height: 50px;
-  border-radius: var(--radius-md);
-  font-size: 15px;
-}
+.reserve-form .btn-full { height: 50px; border-radius: var(--radius-md); font-size: 15px; }
 
-/* =====================
-   REVIEWS
-===================== */
+
+/* =================================================================
+   15. REVIEWS
+   -----------------------------------------------------------------
+   3-column grid of customer review cards. Each has an avatar,
+   name, rating/event meta, and review text.
+
+   REUSE: Works for testimonials, feedback sections.
+   Replace letter avatars with <img> for real photos.
+   ================================================================= */
 .reviews-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -948,6 +1068,7 @@ body {
   margin-bottom: 12px;
 }
 
+/* letter avatar — swap with <img> for real photos */
 .review-avatar {
   width: 44px;
   height: 44px;
@@ -970,23 +1091,22 @@ body {
   margin-bottom: 2px;
 }
 
-.review-meta {
-  font-size: 12px;
-  color: var(--text-muted);
-}
+.review-meta { font-size: 12px; color: var(--text-muted); }
+.review-text { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
 
-.review-text {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
 
-/* =====================
-   VISIT / MAP + CONTACT
-===================== */
+/* =================================================================
+   16. VISIT / MAP + CONTACT
+   -----------------------------------------------------------------
+   Two-column layout: left = embedded Google Map, right = contact
+   details list + reserve CTA.
+
+   REUSE: Works for any location/contact section.
+   Swap the iframe src to any Google Maps embed URL.
+   ================================================================= */
 .visit-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1.2fr 0.8fr; /* map wider than contact */
   gap: 16px;
   align-items: start;
 }
@@ -1006,31 +1126,20 @@ body {
   margin-bottom: 6px;
 }
 
-.visit-text {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-bottom: 14px;
-  line-height: 1.5;
-}
+.visit-text { font-size: 13px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.5; }
 
+/* Google Maps iframe container */
 .map-box {
   border-radius: var(--radius-md);
-  overflow: hidden;
+  overflow: hidden;          /* clips iframe to rounded corners */
   border: 1px solid var(--border);
   height: 260px;
 }
 
-.map-box iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
+.map-box iframe { width: 100%; height: 100%; border: 0; }
 
-.contact-list {
-  display: grid;
-  gap: 10px;
-  margin-bottom: 16px;
-}
+/* contact items list */
+.contact-list { display: grid; gap: 10px; margin-bottom: 16px; }
 
 .contact-item {
   display: flex;
@@ -1042,15 +1151,12 @@ body {
   border: 1px solid var(--border);
 }
 
-.contact-item p {
-  font-size: 14px;
-  color: var(--text-secondary);
-  font-weight: 600;
-}
+.contact-item p { font-size: 14px; color: var(--text-secondary); font-weight: 600; }
 
-/* =====================
-   FOOTER
-===================== */
+
+/* =================================================================
+   17. FOOTER
+   ================================================================= */
 .footer {
   padding: 28px 32px;
   text-align: center;
@@ -1061,15 +1167,21 @@ body {
   line-height: 1.8;
 }
 
-.footer b {
-  color: var(--brand);
-}
+.footer b { color: var(--brand); }
 
-/* =====================
-   HAMBURGER + MOBILE NAV
-===================== */
+
+/* =================================================================
+   18. HAMBURGER + MOBILE NAV DRAWER
+   -----------------------------------------------------------------
+   The hamburger button is hidden on desktop (display:none).
+   On mobile (<900px) it shows and toggles the .mobile-nav drawer.
+   JS adds/removes .open class on both elements.
+
+   REUSE: Copy this entire block for any mobile nav pattern.
+   The 3-span animation turns the icon into an X when open.
+   ================================================================= */
 .hamburger {
-  display: none;
+  display: none; /* shown only on mobile via @media below */
   flex-direction: column;
   justify-content: center;
   gap: 5px;
@@ -1082,6 +1194,7 @@ body {
   padding: 8px;
 }
 
+/* the 3 lines of the hamburger icon */
 .hamburger span {
   display: block;
   height: 2px;
@@ -1090,10 +1203,12 @@ body {
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
+/* animate into X when .open is added by JS */
 .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity: 0; }
 .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* mobile nav drawer — hidden by default, shown when .open */
 .mobile-nav {
   display: none;
   flex-direction: column;
@@ -1105,9 +1220,7 @@ body {
   border-bottom: 1px solid var(--border);
 }
 
-.mobile-nav.open {
-  display: flex;
-}
+.mobile-nav.open { display: flex; } /* JS toggles this */
 
 .mobile-nav-link {
   text-decoration: none;
@@ -1125,66 +1238,59 @@ body {
   color: var(--brand);
 }
 
-/* =====================
-   RESPONSIVE
-===================== */
+
+/* =================================================================
+   19. RESPONSIVE BREAKPOINTS
+   -----------------------------------------------------------------
+   Two breakpoints:
+   - 1024px: menu cards go from 4 → 2 columns
+   - 900px:  everything stacks to single column, hamburger shows
+
+   PATTERN FOR NEW SITES:
+   - Keep all desktop styles above this block.
+   - Only override what needs to change at each breakpoint.
+   - Use grid-template-columns: 1fr to collapse any grid.
+   ================================================================= */
+
+/* ---- Tablet (1024px and below) ---- */
 @media (max-width: 1024px) {
   .menu-cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* 4 → 2 columns */
   }
 }
 
+/* ---- Mobile (900px and below) ---- */
 @media (max-width: 900px) {
-  .navbar {
-    padding: 12px 16px;
-  }
 
-  .nav-links {
-    display: none;
-  }
+  /* Navbar */
+  .navbar { padding: 12px 16px; }
+  .nav-links { display: none; }   /* hide desktop nav links */
+  .hamburger { display: flex; }   /* show hamburger button */
+  .desktop-only { display: none; }/* hide desktop-only CTA */
 
-  .hamburger {
-    display: flex;
-  }
-
-  .desktop-only {
-    display: none;
-  }
-
-  /* Hero stacks vertically */
+  /* Hero: stack left then right */
   .hero {
     padding: 32px 16px 24px;
     grid-template-columns: 1fr;
     gap: 20px;
   }
 
-  .hero-left { grid-column: 1; grid-row: 1; }
+  .hero-left  { grid-column: 1; grid-row: 1; }
   .hero-right { grid-column: 1; grid-row: 2; }
 
-  .hero-title {
-    font-size: 30px;
-    letter-spacing: -0.8px;
-  }
+  .hero-title { font-size: 30px; letter-spacing: -0.8px; }
+  .hero-subtitle { font-size: 14px; }
 
-  .hero-subtitle {
-    font-size: 14px;
-  }
+  /* Stats: flex and share available width equally */
+  .hero-stats { gap: 10px; }
+  .stat { min-width: 0; flex: 1; padding: 12px 14px; }
+  .stat h3 { font-size: 18px; }
 
-  .hero-stats {
-    gap: 10px;
-  }
+  /* Buttons: stack vertically, full width */
+  .hero-buttons { flex-direction: column; }
+  .hero-buttons .btn { width: 100%; justify-content: center; }
 
-  .stat {
-    min-width: 0;
-    flex: 1;
-    padding: 12px 14px;
-  }
-
-  .stat h3 {
-    font-size: 18px;
-  }
-
-  /* All multi-col grids → single col */
+  /* All multi-column grids → single column */
   .special-grid,
   .lineup-grid,
   .read-grid,
@@ -1194,7 +1300,7 @@ body {
     grid-template-columns: 1fr;
   }
 
-  /* Reserve */
+  /* Reserve: stack form below seat map */
   .reserve-box {
     grid-template-columns: 1fr;
     padding: 20px 16px;
@@ -1202,63 +1308,32 @@ body {
     border-radius: var(--radius-lg);
   }
 
-  .reserve-left h2 {
-    font-size: 24px;
-  }
+  .reserve-left h2 { font-size: 24px; }
+  .seat-grid-map { grid-template-columns: repeat(4, 1fr); } /* keep 4 cols */
 
-  .seat-grid-map {
-    grid-template-columns: repeat(4, 1fr);
-  }
+  /* Visit: map above contact */
+  .visit-grid { grid-template-columns: 1fr; }
+  .map-box { height: 220px; }
 
-  /* Visit */
-  .visit-grid {
-    grid-template-columns: 1fr;
-  }
+  /* Sections: tighter padding on mobile */
+  .section { padding: 36px 16px; }
+  .section-head h2 { font-size: 22px; }
 
-  .map-box {
-    height: 220px;
-  }
-
-  /* Sections */
-  .section {
-    padding: 36px 16px;
-  }
-
-  .section-head h2 {
-    font-size: 22px;
-  }
-
-  /* Carousel — hide buttons on touch, let it scroll naturally */
-  .carousel-btn {
-    display: none;
-  }
+  /* Carousel: hide arrow buttons, use native swipe + snap */
+  .carousel-btn { display: none; }
 
   .carousel {
     padding: 8px 0;
     gap: 12px;
-    /* snap scrolling for mobile */
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;      /* snaps to each card */
+    -webkit-overflow-scrolling: touch;  /* smooth iOS scroll */
   }
 
   .drink-card {
-    min-width: 72vw;
-    scroll-snap-align: start;
-  }
-
-  /* Buttons full-width on small screens */
-  .hero-buttons {
-    flex-direction: column;
-  }
-
-  .hero-buttons .btn {
-    width: 100%;
-    justify-content: center;
+    min-width: 72vw;           /* ~1.4 cards visible at a time */
+    scroll-snap-align: start;  /* snap to left edge of each card */
   }
 
   /* Footer */
-  .footer {
-    padding: 20px 16px;
-    font-size: 13px;
-  }
+  .footer { padding: 20px 16px; font-size: 13px; }
 }

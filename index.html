@@ -1,48 +1,129 @@
 <!DOCTYPE html>
+<!--
+  INDEX.HTML — VISIONCAFE MAIN PAGE
+  ===========================================================
+  REUSE GUIDE FOR NEW SITES:
+  1. Copy this file and rename it for your project.
+  2. Update all <meta> tags in <head> with your site's info.
+  3. Replace og:image and twitter:image with a real 1200x630px
+     screenshot of your site for social link previews.
+  4. Update the canonical URL to your live domain.
+  5. Swap the Google Font link for any font from fonts.google.com.
+  6. Each section below is self-contained — copy/remove freely.
+
+  PAGE SECTIONS (in order):
+  - <head>         SEO, Open Graph, favicon, fonts, styles
+  - <header>       Sticky navbar + hamburger
+  - .mobile-nav    Mobile drawer (toggled by script.js)
+  - <main.hero>    Two-column hero: headline left, event card right
+  - #specials      Today's 3 featured specials
+  - #order         Horizontal drink carousel
+  - #lineup        Artist performance schedule
+  - #readandsip    Read & Sip info cards
+  - #menu          4-column signature menu grid
+  - #picks         Chef's + Barista's pick highlight cards
+  - #reserve       Table booking form + seat map
+  - #reviews       Customer review cards
+  - #visit         Google Map + contact details
+  - <footer>       Simple text footer
+  ===========================================================
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!--
+    viewport meta: REQUIRED for mobile responsiveness.
+    width=device-width = use the device's actual screen width.
+    initial-scale=1.0  = don't zoom in/out on load.
+  -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Primary SEO -->
+  <!-- ============================================================
+    PRIMARY SEO TAGS
+    These appear in Google search results.
+    - title: keep under 60 characters
+    - description: keep under 160 characters, include keywords
+    - keywords: optional, not heavily used by Google anymore
+    - robots: "index, follow" = crawl this page and follow links
+    - canonical: prevents duplicate content issues if the page
+      is accessible from multiple URLs
+  ============================================================ -->
   <title>VisionCafe | Live Music Nights & Specialty Coffee</title>
   <meta name="description" content="VisionCafe — specialty coffee, live acoustic music nights, cozy reading corners, and handcrafted drinks. Book your table today." />
   <meta name="keywords" content="VisionCafe, live music cafe, specialty coffee, acoustic nights, book a table, cafe India" />
   <meta name="author" content="VisionCafe" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://rnsingh123.github.io/Project0002/" />
+  <!-- UPDATE canonical to your actual live URL before deploying -->
 
-  <!-- Open Graph (Facebook / WhatsApp previews) -->
+  <!-- ============================================================
+    OPEN GRAPH TAGS
+    Controls how the page looks when shared on:
+    Facebook, WhatsApp, LinkedIn, Telegram, etc.
+    - og:image should be 1200x630px for best results.
+      Create one at canva.com or use a screenshot.
+    - og:url must match the canonical URL above.
+  ============================================================ -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="VisionCafe | Live Music Nights & Specialty Coffee" />
   <meta property="og:description" content="Strong brews, bold flavors, and a live stage that keeps the night alive. Reserve your seat at VisionCafe." />
   <meta property="og:url" content="https://rnsingh123.github.io/Project0002/" />
   <meta property="og:site_name" content="VisionCafe" />
   <meta property="og:image" content="https://rnsingh123.github.io/Project0002/assets/og-image.png" />
+  <!-- TODO: Create assets/og-image.png (1200x630px) for social previews -->
 
-  <!-- Twitter Card -->
+  <!-- ============================================================
+    TWITTER CARD TAGS
+    Controls how the page looks when shared on Twitter/X.
+    summary_large_image = big image preview (recommended).
+  ============================================================ -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="VisionCafe | Live Music Nights" />
   <meta name="twitter:description" content="Strong brews, bold flavors, and a live stage that keeps the night alive." />
   <meta name="twitter:image" content="https://rnsingh123.github.io/Project0002/assets/og-image.png" />
 
-  <!-- Favicon -->
+  <!-- ============================================================
+    FAVICON + THEME COLOR
+    favicon.svg = browser tab icon (SVG works in all modern browsers)
+    apple-touch-icon = icon when added to iPhone home screen
+    theme-color = browser chrome color on Android Chrome
+    All favicon files live in /assets/
+  ============================================================ -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <meta name="theme-color" content="#d4541a" />
+  <!-- theme-color matches --brand in theme.css — keep them in sync -->
 
-  <!-- Fonts -->
+  <!-- ============================================================
+    GOOGLE FONTS
+    preconnect = tells browser to connect to Google's servers early
+    (speeds up font loading).
+    To change font: replace "Manrope" with any Google Font name,
+    and update --font-main in theme.css to match.
+  ============================================================ -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
+  <!-- ============================================================
+    STYLESHEETS
+    Load theme.css FIRST — it defines all CSS variables.
+    style.css imports theme.css too, but explicit order is safer.
+  ============================================================ -->
   <link rel="stylesheet" href="theme.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
+  <!-- ============================================================
+    NAVBAR
+    - position: sticky (stays at top while scrolling) via CSS
+    - .brand = logo area (icon + name + tag)
+    - .nav-links = desktop anchor links (hidden on mobile)
+    - .nav-actions = CTA button + hamburger (hamburger hidden on desktop)
+    - .desktop-only class hides the CTA button on mobile
+  ============================================================ -->
   <header class="navbar">
     <div class="brand">
       <span class="brand-icon">☕</span>
@@ -51,6 +132,7 @@
     </div>
 
     <nav class="nav-links" id="navLinks">
+      <!-- Each href="#id" scrolls to the matching section -->
       <a href="#events">Tonight</a>
       <a href="#lineup">Line-Up</a>
       <a href="#reserve">Reserve</a>
@@ -59,14 +141,21 @@
     </nav>
 
     <div class="nav-actions">
+      <!-- .desktop-only hides this on mobile (see @media in style.css) -->
       <a href="#reserve" class="btn btn-primary desktop-only">Book a Table</a>
+      <!-- Hamburger: 3 <span> lines animate into X via CSS + JS -->
       <button class="hamburger" id="hamburger" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <!-- Mobile Nav Drawer -->
+  <!-- ============================================================
+    MOBILE NAV DRAWER
+    Hidden by default. JS adds .open class when hamburger is clicked.
+    All links close the drawer on tap (handled in script.js).
+    Sits directly below the navbar in the DOM flow.
+  ============================================================ -->
   <div class="mobile-nav" id="mobileNav">
     <a href="#events" class="mobile-nav-link">Tonight</a>
     <a href="#lineup" class="mobile-nav-link">Line-Up</a>
@@ -76,41 +165,44 @@
     <a href="#reserve" class="btn btn-primary" style="margin-top:8px;">Book a Table</a>
   </div>
 
-  <!-- HERO -->
+  <!-- ============================================================
+    HERO SECTION
+    Two-column CSS grid: .hero-left (headline) | .hero-right (event card)
+    On mobile, collapses to single column (see @media in style.css).
+    Uses <main> tag for semantic HTML — only one <main> per page.
+  ============================================================ -->
   <main class="hero">
+
+    <!-- Left column: headline, subtitle, CTA buttons, stats -->
     <section class="hero-left">
+      <!-- .hero-chip = small pill label above the headline -->
       <p class="hero-chip">🔥 Strong Roast • Live Music • Late Night Energy</p>
 
+      <!-- h1 = main page heading, only one per page for SEO -->
       <h1 class="hero-title">
         Coffee, Comfort & <span class="highlight">Tonight's Live Music</span>.
+        <!-- .highlight applies gradient text effect via CSS -->
       </h1>
 
       <p class="hero-subtitle">
         Strong brews, bold flavors, and a live stage that keeps the night alive.
       </p>
 
+      <!-- Two CTA buttons: primary action + secondary action -->
       <div class="hero-buttons">
         <a href="#order" class="btn btn-primary">Order Now</a>
         <a href="#reserve" class="btn btn-secondary">Reserve Table</a>
       </div>
 
+      <!-- Quick stats row: rating, show time, seat count -->
       <div class="hero-stats">
-        <div class="stat">
-          <h3>4.9★</h3>
-          <p>Rated by customers</p>
-        </div>
-        <div class="stat">
-          <h3>7:30 PM</h3>
-          <p>Show starts</p>
-        </div>
-        <div class="stat">
-          <h3>30+</h3>
-          <p>Seats available</p>
-        </div>
+        <div class="stat"><h3>4.9★</h3><p>Rated by customers</p></div>
+        <div class="stat"><h3>7:30 PM</h3><p>Show starts</p></div>
+        <div class="stat"><h3>30+</h3><p>Seats available</p></div>
       </div>
     </section>
 
-    <!-- Tonight's Event Card -->
+    <!-- Right column: tonight's event card (id="events" for nav link) -->
     <aside class="hero-right" id="events">
       <div class="event-card">
         <p class="small-title">Tonight's Events</p>
@@ -118,6 +210,7 @@
         <p class="event-desc">
           Smooth vocals + warm lights + coffee aroma. Perfect for chill evenings.
         </p>
+        <!-- .pill = small info tag, reuse for any metadata -->
         <div class="event-meta">
           <span class="pill">🕘 7:30 PM</span>
           <span class="pill">📍 Stage A</span>
@@ -128,7 +221,12 @@
     </aside>
   </main>
 
-  <!-- TODAY'S SPECIALS -->
+  <!-- ============================================================
+    TODAY'S SPECIALS
+    3-column card grid. Each card has a colored tag, name,
+    description, price, and order button.
+    .special-tag variants: default (red), .coffee (gold), .blue (green)
+  ============================================================ -->
   <section class="section" id="specials">
     <div class="section-head">
       <h2>Today's Special</h2>
@@ -165,7 +263,13 @@
     </div>
   </section>
 
-  <!-- SIGNATURE DRINKS CAROUSEL -->
+  <!-- ============================================================
+    SIGNATURE DRINKS CAROUSEL
+    Horizontally scrollable row of drink cards.
+    Arrow buttons (.carousel-btn) scroll by 280px via script.js.
+    On mobile: buttons hidden, scroll-snap handles swiping.
+    To add more drinks: duplicate a .drink-card block.
+  ============================================================ -->
   <section class="section" id="order">
     <div class="section-head">
       <h2>Signature Drinks</h2>
@@ -174,6 +278,7 @@
     <div class="carousel-wrap">
       <button class="carousel-btn left" aria-label="Scroll left">‹</button>
       <div class="carousel" id="drinkCarousel">
+        <!-- Each .drink-card = one item in the carousel -->
         <div class="drink-card">
           <h3>Caramel Latte</h3>
           <p>Sweet, smooth & creamy.</p>
@@ -219,7 +324,12 @@
     </div>
   </section>
 
-  <!-- ARTIST LINE-UP -->
+  <!-- ============================================================
+    ARTIST LINE-UP
+    3-column grid. Each card: letter avatar, name, genre, time.
+    To use real photos: replace .artist-avatar letter with <img>.
+    To add more artists: duplicate an .artist-card block.
+  ============================================================ -->
   <section class="section" id="lineup">
     <div class="section-head">
       <h2>Artist Line-Up</h2>
@@ -227,7 +337,7 @@
     </div>
     <div class="lineup-grid">
       <div class="artist-card">
-        <div class="artist-avatar">A</div>
+        <div class="artist-avatar">A</div><!-- replace with <img> for real photo -->
         <div class="artist-info">
           <h3>Aarav Beats</h3>
           <p>Acoustic • Indie</p>
@@ -253,13 +363,20 @@
     </div>
   </section>
 
-  <!-- READ & SIP -->
+  <!-- ============================================================
+    READ & SIP
+    3 info cards: book categories (chips), quiet zones (list),
+    reading seats (2x2 grid).
+    The section has a tinted background set via #readandsip in CSS.
+  ============================================================ -->
   <section class="section" id="readandsip">
     <div class="section-head">
       <h2>Read & Sip 📚☕</h2>
       <p>Quiet corners, warm coffee, and books that match your mood.</p>
     </div>
     <div class="read-grid">
+
+      <!-- Card 1: category chips — reuse .chips + .chip anywhere -->
       <div class="read-card">
         <h3>Book Categories</h3>
         <p>Pick your vibe and enjoy your perfect coffee pairing.</p>
@@ -272,6 +389,8 @@
           <span class="chip">Romance</span>
         </div>
       </div>
+
+      <!-- Card 2: styled list — reuse .read-list for any feature list -->
       <div class="read-card">
         <h3>Quiet Zones</h3>
         <p>Designed for focus, reading, and peaceful conversations.</p>
@@ -282,6 +401,8 @@
           <li>🎧 Headphones Friendly</li>
         </ul>
       </div>
+
+      <!-- Card 3: 2x2 mini grid — reuse .seat-grid + .seat-box -->
       <div class="read-card">
         <h3>Reading Seats</h3>
         <p>Choose the seat that matches your comfort.</p>
@@ -295,7 +416,12 @@
     </div>
   </section>
 
-  <!-- SIGNATURE MENU -->
+  <!-- ============================================================
+    SIGNATURE MENU
+    4-column grid (2 on tablet, 1 on mobile).
+    Each card: icon, badge, name, description, price, add button.
+    To add items: duplicate a .menu-card block.
+  ============================================================ -->
   <section class="section" id="menu">
     <div class="section-head">
       <h2>Signature Menu</h2>
@@ -329,7 +455,11 @@
     </div>
   </section>
 
-  <!-- PICKS -->
+  <!-- ============================================================
+    CHEF'S & BARISTA'S PICKS
+    2-column highlight cards. .pick-badge has two color variants:
+    default (red/brand) and .barista (gold).
+  ============================================================ -->
   <section class="section" id="picks">
     <div class="section-head">
       <h2>Chef's Pick & Barista's Pick</h2>
@@ -343,7 +473,7 @@
         <div class="pick-bottom"><span class="price">₹129</span><button class="btn btn-primary">Add</button></div>
       </div>
       <div class="pick-card">
-        <span class="pick-badge barista">☕ Barista's Pick</span>
+        <span class="pick-badge barista">☕ Barista's Pick</span><!-- .barista = gold color variant -->
         <h3>Dark Roast Espresso</h3>
         <p>Strong shot, bold flavor, perfect for late nights.</p>
         <div class="pick-bottom"><span class="price">₹99</span><button class="btn btn-primary">Add</button></div>
@@ -351,15 +481,26 @@
     </div>
   </section>
 
-  <!-- RESERVE -->
+  <!-- ============================================================
+    RESERVE A TABLE
+    Split layout: left = seat visual picker, right = booking form.
+    Seat buttons are color-coded by type (sofa/window/study/couple).
+    JS handles seat selection (adds .selected class).
+    Form currently has no backend — connect to Formspree, EmailJS,
+    or your own API to make it functional.
+  ============================================================ -->
   <section class="section" id="reserve">
     <div class="reserve-box">
+
+      <!-- Left: seat map -->
       <div class="reserve-left">
         <h2>Reserve a Table</h2>
         <p>Pick your seat like booking a flight — quick & satisfying.</p>
         <div class="seat-map">
           <p class="seat-title">Choose Your Seat Style</p>
+          <!-- id="seatGrid" is used by script.js for click delegation -->
           <div class="seat-grid-map" id="seatGrid">
+            <!-- S = Sofa, W = Window, T = Study Table, C = Couple -->
             <button class="seat seat-sofa">S1</button>
             <button class="seat seat-sofa">S2</button>
             <button class="seat seat-window">W1</button>
@@ -369,9 +510,12 @@
             <button class="seat seat-couple">C1</button>
             <button class="seat seat-couple">C2</button>
           </div>
+          <!-- id="seatSelected" is updated by script.js on seat click -->
           <p class="seat-note">Selected: <span id="seatSelected">None</span></p>
         </div>
       </div>
+
+      <!-- Right: booking form — connect to backend to make functional -->
       <form class="reserve-form">
         <input type="text" placeholder="Your Name" required />
         <input type="tel" placeholder="Phone Number" required />
@@ -382,7 +526,12 @@
     </div>
   </section>
 
-  <!-- REVIEWS -->
+  <!-- ============================================================
+    CUSTOMER REVIEWS
+    3-column grid. Each card: letter avatar, name, rating, review.
+    To add more reviews: duplicate a .review-card block.
+    Replace letter avatars with <img> for real customer photos.
+  ============================================================ -->
   <section class="section" id="reviews">
     <div class="section-head">
       <h2>Customer Reviews</h2>
@@ -391,7 +540,7 @@
     <div class="reviews-grid">
       <div class="review-card">
         <div class="review-top">
-          <div class="review-avatar">R</div>
+          <div class="review-avatar">R</div><!-- replace with <img> for real photo -->
           <div><h3>Riya</h3><p class="review-meta">⭐ 5.0 • Acoustic Night</p></div>
         </div>
         <p class="review-text">Coffee was bold and smooth ☕🔥 The live music made it feel premium. Best night vibe café.</p>
@@ -413,17 +562,25 @@
     </div>
   </section>
 
-  <!-- VISIT / MAP -->
+  <!-- ============================================================
+    FIND US — MAP + CONTACT
+    Two-column: left = Google Maps embed, right = contact details.
+    To change the map location: update the iframe src URL.
+    Use https://maps.google.com/maps?q=YOUR+ADDRESS&output=embed
+  ============================================================ -->
   <section class="section" id="visit">
     <div class="section-head">
       <h2>Find Us</h2>
       <p>Drop in tonight — coffee is strong and the stage is live.</p>
     </div>
     <div class="visit-grid">
+
+      <!-- Left: embedded map -->
       <div class="visit-card">
         <h3>📍 VisionCafe Location</h3>
         <p class="visit-text">India • Open Daily • Live Music Nights</p>
         <div class="map-box">
+          <!-- loading="lazy" defers iframe load until scrolled into view -->
           <iframe
             title="VisionCafe Location"
             src="https://maps.google.com/maps?q=India&t=&z=13&ie=UTF8&iwloc=&output=embed"
@@ -431,6 +588,8 @@
           ></iframe>
         </div>
       </div>
+
+      <!-- Right: contact info + CTA -->
       <div class="visit-card">
         <h3>📞 Contact</h3>
         <p class="visit-text">Reserve fast or call us for tonight's seating.</p>
@@ -444,11 +603,21 @@
     </div>
   </section>
 
+  <!-- ============================================================
+    FOOTER
+    id="contact" so the navbar "Contact" link scrolls here.
+    Keep it simple — just brand name, location, phone, email.
+  ============================================================ -->
   <footer class="footer" id="contact">
     <p><b>VisionCafe</b> — Live Music & Comfy Nights ☕🎶</p>
     <p>📍 India • 📞 +91 9788866543 • ✉️ visionengine@gmail.com</p>
   </footer>
 
+  <!-- ============================================================
+    SCRIPTS
+    Loaded at the bottom of <body> so the DOM is ready when JS runs.
+    script.js handles: hamburger menu, carousel buttons, seat map.
+  ============================================================ -->
   <script src="script.js"></script>
 </body>
 </html>

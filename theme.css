@@ -1,55 +1,131 @@
-/* =============================================
-   VISIONCAFE — THEME FILE
-   Light & Warm Live Music Cafe Theme
-   ============================================= */
+/* =================================================================
+   THEME.CSS — DESIGN TOKENS
+   -----------------------------------------------------------------
+   HOW TO USE FOR A NEW SITE:
+   1. Copy this file into your new project as-is.
+   2. Change the values inside :root{} to match your brand.
+   3. Never hardcode colors/fonts/shadows in style.css —
+      always reference a variable from here instead.
+   4. To switch the whole site's look, you only edit THIS file.
+   -----------------------------------------------------------------
+   NAMING CONVENTION:
+   --bg-*        → background surfaces (page, card, muted areas)
+   --brand-*     → primary brand color and its variants
+   --accent-*    → secondary highlight color (e.g. green, blue)
+   --gold-*      → warm gold tones (coffee/music vibe)
+   --text-*      → text hierarchy (primary > secondary > muted)
+   --border      → subtle border, --border-strong for emphasis
+   --shadow-*    → sm / md / lg elevation levels
+   --radius-*    → corner rounding scale
+   --gradient-*  → reusable gradient shortcuts
+   ================================================================= */
 
 :root {
-  /* --- Background Palette --- */
-  --bg-base:        #fdf6ee;   /* warm cream */
-  --bg-surface:     #fff9f2;   /* soft off-white */
-  --bg-card:        #ffffff;   /* pure white cards */
-  --bg-muted:       #f5ede0;   /* muted warm tone */
 
-  /* --- Brand Colors --- */
-  --brand:          #d4541a;   /* deep burnt orange */
-  --brand-dark:     #a83c0e;   /* darker burnt orange */
-  --brand-light:    #f4a96a;   /* soft peach-orange */
+  /* ---------------------------------------------------------------
+     BACKGROUNDS
+     bg-base    = full page background
+     bg-surface = slightly lighter surface (inputs, alt sections)
+     bg-card    = white card background
+     bg-muted   = warm tinted areas (footers, seat maps, chips)
+  --------------------------------------------------------------- */
+  --bg-base:        #fdf6ee;
+  --bg-surface:     #fff9f2;
+  --bg-card:        #ffffff;
+  --bg-muted:       #f5ede0;
 
-  /* --- Accent --- */
-  --accent:         #2c6e49;   /* forest green (music/stage feel) */
-  --accent-light:   #d4edda;   /* light green tint */
+  /* ---------------------------------------------------------------
+     BRAND COLORS
+     Change these 3 to rebrand the entire site instantly.
+     brand       = main CTA color (buttons, highlights, prices)
+     brand-dark  = hover/pressed state of brand
+     brand-light = soft tint for backgrounds and chips
+  --------------------------------------------------------------- */
+  --brand:          #d4541a;   /* burnt orange — change for new brand */
+  --brand-dark:     #a83c0e;
+  --brand-light:    #f4a96a;
 
-  /* --- Gold / Coffee Tones --- */
-  --gold:           #c9922a;   /* warm gold */
-  --gold-light:     #fde8c0;   /* pale gold */
+  /* ---------------------------------------------------------------
+     ACCENT COLOR
+     Used for secondary tags (e.g. "Music Combo" badge).
+     Swap to any color that complements your brand.
+  --------------------------------------------------------------- */
+  --accent:         #2c6e49;   /* forest green */
+  --accent-light:   #d4edda;
 
-  /* --- Text --- */
-  --text-primary:   #1a1208;   /* near-black warm */
-  --text-secondary: #5a3e28;   /* warm brown */
-  --text-muted:     #9a7a5a;   /* muted tan */
+  /* ---------------------------------------------------------------
+     GOLD / WARM TONES
+     Used for badges, avatars, and warm highlights.
+     Works well for food/cafe/hospitality sites.
+  --------------------------------------------------------------- */
+  --gold:           #c9922a;
+  --gold-light:     #fde8c0;
 
-  /* --- Borders & Shadows --- */
+  /* ---------------------------------------------------------------
+     TEXT HIERARCHY
+     Always use these instead of hardcoded colors.
+     primary   = headings, important labels
+     secondary = body text, descriptions
+     muted     = placeholders, meta info, subtitles
+  --------------------------------------------------------------- */
+  --text-primary:   #1a1208;
+  --text-secondary: #5a3e28;
+  --text-muted:     #9a7a5a;
+
+  /* ---------------------------------------------------------------
+     BORDERS
+     border        = default subtle border on cards/inputs
+     border-strong = more visible border for badges/tags
+  --------------------------------------------------------------- */
   --border:         rgba(180, 120, 60, 0.18);
   --border-strong:  rgba(180, 120, 60, 0.35);
+
+  /* ---------------------------------------------------------------
+     SHADOWS — elevation scale
+     sm = cards, inputs (low elevation)
+     md = hovered cards, dropdowns (mid elevation)
+     lg = modals, reserve box (high elevation)
+  --------------------------------------------------------------- */
   --shadow-sm:      0 4px 16px rgba(100, 60, 20, 0.10);
   --shadow-md:      0 10px 32px rgba(100, 60, 20, 0.14);
   --shadow-lg:      0 22px 55px rgba(100, 60, 20, 0.18);
 
-  /* --- Glass / Overlay --- */
+  /* ---------------------------------------------------------------
+     GLASS / FROSTED EFFECT
+     Used on sticky navbar and mobile drawer.
+     Pair with backdrop-filter: blur() in CSS.
+  --------------------------------------------------------------- */
   --glass:          rgba(255, 255, 255, 0.72);
   --glass-border:   rgba(255, 255, 255, 0.85);
 
-  /* --- Typography --- */
+  /* ---------------------------------------------------------------
+     TYPOGRAPHY
+     Change --font-main to swap the entire site's font.
+     Load the new font in <head> via Google Fonts first.
+  --------------------------------------------------------------- */
   --font-main:      "Manrope", Arial, Helvetica, sans-serif;
 
-  /* --- Radius --- */
+  /* ---------------------------------------------------------------
+     BORDER RADIUS SCALE
+     sm   = small chips, tags
+     md   = inputs, buttons, small cards
+     lg   = section cards, carousels
+     xl   = large containers (reserve box)
+     pill = fully rounded (badges, pills)
+  --------------------------------------------------------------- */
   --radius-sm:      12px;
   --radius-md:      18px;
   --radius-lg:      24px;
   --radius-xl:      32px;
   --radius-pill:    999px;
 
-  /* --- Gradients --- */
+  /* ---------------------------------------------------------------
+     GRADIENTS
+     gradient-brand = primary button / highlight text
+     gradient-warm  = decorative warm gradient
+     gradient-bg    = full page background
+     gradient-card  = subtle card background (white → warm tint)
+  --------------------------------------------------------------- */
   --gradient-brand: linear-gradient(135deg, var(--brand), var(--brand-dark));
   --gradient-warm:  linear-gradient(135deg, var(--brand-light), var(--gold));
   --gradient-bg:    linear-gradient(160deg, #fdf6ee 0%, #fff3e6 50%, #fdf0e0 100%);
